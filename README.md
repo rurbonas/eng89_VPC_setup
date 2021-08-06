@@ -27,10 +27,10 @@ Please note also that to keep things consistent we will be using:
 
 ### Create a route table
 
-    |   Destination    |   Target                    |   Status  |   Propagated  |
-    |------------------|-----------------------------|-----------|---------------|
-    |  `10.211.0.0/16` |   local                     |   Active  |   No          |
-    |  `0.0.0.0/0`     |   Your internet gateway id  |   Active  |   No          |
+        |   Destination    |   Target                    |   Status  |   Propagated  |
+        |------------------|-----------------------------|-----------|---------------|
+        |  `10.211.0.0/16` |   local                     |   Active  |   No          |
+        |  `0.0.0.0/0`     |   Your internet gateway id  |   Active  |   No          |
 
 4. Create 3 ACLs
     1. Public:
@@ -90,6 +90,7 @@ Please note also that to keep things consistent we will be using:
 6. Create 3 security groups:
     1. app:
         1. Inbound:
+
         | Type       | Protocol | Port range   | Source        | Description |
         |------------|----------|--------------|---------------|------------|
         | HTTP       | TCP (6)  | `80`         | `0.0.0.0/0`   | Allows users to connect      |
@@ -102,6 +103,7 @@ Please note also that to keep things consistent we will be using:
         
     2. Bastion
         1. Inbound:
+        
         | Type       | Protocol | Port range   | Source        | Description |
         |------------|----------|--------------|---------------|------------|
         | SSH        | TCP (6)  | `22`         | `[your ip]/32`|  We only want the ssh set up since this talks between us and the db  |
