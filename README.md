@@ -1,4 +1,5 @@
 # VPC Setup
+![](VPC.jpg)
 ## Notes
 `10.211.0.0` was used as a baseline for this, replace it with your own private IP.
 
@@ -6,6 +7,8 @@ Please note also that to keep things consistent we will be using:
 - `10.211.1.0` to reference the public subnet
 - `10.211.2.0` to reference the private subnet
 - `10.211.3.0` to reference the Bastion's subnet 
+
+![](Subnets.jpg)
 
 ## Steps for creation
 ### Create a new VPC, the private IP address as the IPv4 CIDR block
@@ -26,19 +29,21 @@ Please note also that to keep things consistent we will be using:
 
     |   Destination    |   Target                    |   Status  |   Propagated  |
     |------------------|-----------------------------|-----------|---------------|
-    |   `10.211.0.0/16`  |   local                     |   Active  |   No          |
-    |   `0.0.0.0/0`      |   Your internet gateway id  |   Active  |   No          |
+    |  `10.211.0.0/16` |   local                     |   Active  |   No          |
+    |  `0.0.0.0/0`     |   Your internet gateway id  |   Active  |   No          |
+
 4. Create 3 ACLs
     1. Public:
         1. Inbound:
 
         | Rule number | Type       | Protocol | Port range   | Source       | Allow/Deny |
         |-------------|------------|----------|--------------|--------------|------------|
-        | 100         | HTTP (80)  | TCP (6)  | `80`           | `0.0.0.0/0`    | Allow      |
-        | 115         | SSH (22)   | TCP (6)  | `22`           | `[your ip]/32` | Allow      |
-        | 120         | Custom TCP | TCP (6)  | `1024 - 65535` | `0.0.0.0/0`    | Allow      |    
-		2. Outbound:
-    
+        | 100         | HTTP (80)  | TCP (6)  | `80`           | `0.0.0.0/0`    | Allow  |
+        | 115         | SSH (22)   | TCP (6)  | `22`           | `[your ip]/32` | Allow  |
+        | 120         | Custom TCP | TCP (6)  | `1024 - 65535` | `0.0.0.0/0`    | Allow  |    
+		
+         2. Outbound:
+
         | Rule number | Type       | Protocol | Port range   | Destination   | Allow/Deny |
         |-------------|------------|----------|--------------|---------------|------------|
         | 100         | HTTP (80)  | TCP (6)  | `80`           | `0.0.0.0/0`     | Allow      |
@@ -64,9 +69,10 @@ Please note also that to keep things consistent we will be using:
         
         | Rule number | Type       | Protocol | Port range   | Source        | Allow/Deny |
         |-------------|------------|----------|--------------|---------------|------------|
-        | 100         | SSH (22)   | TCP (6)  | `22`           | `[your ip]/32`     | Allow      |
+        | 100         | SSH (22)   | TCP (6)  | `22`           | `[your ip]/32`  |Allow      |
         | 110         | Custom TCP | TCP (6)  | `1024 - 65535` | `10.212.2.0/24` | Allow      |
-        2. Outbound:
+    
+    2. Outbound:
         
         | Rule number | Type       | Protocol | Port range   | Destination   | Allow/Deny |
         |-------------|------------|----------|--------------|---------------|------------|
