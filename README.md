@@ -70,7 +70,7 @@ Please note also that to keep things consistent we will be using:
         | Rule number | Type       | Protocol | Port range   | Source        | Allow/Deny |
         |-------------|------------|----------|--------------|---------------|------------|
         | 100         | SSH (22)   | TCP (6)  | `22`           | `[your ip]/32`  |Allow      |
-        | 110         | Custom TCP | TCP (6)  | `1024 - 65535` | `10.212.2.0/24` | Allow      |
+        | 110         | Custom TCP | TCP (6)  | `1024 - 65535` | `10.211.2.0/24` | Allow      |
     
     2. Outbound:
         
