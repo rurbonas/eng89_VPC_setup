@@ -165,7 +165,7 @@ In order to access the DB you will have to go via your Bastion instance. Here's 
     - `sudo systemctl restart mongod`
 2. Inside app:
     - `export DB_HOST=mongodb://[db private ip]:27017/posts >> ~/.profile`
-    - Change `proxy_pass` ip address to [public app ip] inside `/etc/nginx/sites-available/default`
+    - Change `proxy_pass` ip address to [private app ip] inside `/etc/nginx/sites-available/default`
     - `sudo nginx -t`
     - `sudo systemctl restart nginx`
     - Run seeds.js (`app/seeds/`)
