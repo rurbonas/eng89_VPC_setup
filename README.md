@@ -118,6 +118,7 @@ Please note also that to keep things consistent we will be using:
         1. Inbound: link to your app and you db security groups on port `27017` and `22` respectively
         2. Outbound: Leave as default
 7. Head on over to EC2 and spin up 3 new instances:
+![](AMIs.JPG)
     1. App
         - choose app AMI
         - Select VPC for - Network
